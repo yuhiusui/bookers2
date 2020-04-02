@@ -10,6 +10,27 @@
   </head>
 
   <body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <nav class="nav navbar-nav navbar-left text-danger"><span>Bookers</span></nav>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <li><a href="/users/id" class="nav-icon">Home</a></li>
+              <li><a href="/users" class="nav-icon">Users</a></li>
+              <li><a href="/books" class="nav-icon">Books</a></li>
+              <li><a href="/users/sign_out" class="nav-icon">logout</a></li>
+            <% else %>
+              <li><a href="/" class="nav-icon">Home</a></li>
+              <li><a href="/home/about" class="nav-icon">About</a></li>
+              <li><%= link_to "Sign up", new_user_registration_path %></li>
+              <li><%= link_to "Login", new_user_session_path %></li>
+            <% end %>
+
+          </ul><!-- /.navbar-rigth -->
+        </nav>
+      </div><!-- /.container -->
+    </header>
     <%= yield %>
   </body>
 </html>
