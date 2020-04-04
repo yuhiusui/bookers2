@@ -1,0 +1,12 @@
+<%= form _for(@post_image, url:post_images_path) do |f| %>
+<h1>User info</h1>
+	<%= f.label :Name %>
+	<%= f.text_field :name %>
+
+	<%= f.attachment_field :image %>
+
+	<%= f.label :Introduction %>
+	<%= f.text_area :introduction %>
+
+	<%= f.submit "Update User" %>
+<% end %>

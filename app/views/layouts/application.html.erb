@@ -16,13 +16,13 @@
         <nav>
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
-              <li><a href="/users/id" class="nav-icon">Home</a></li>
-              <li><a href="/users" class="nav-icon">Users</a></li>
-              <li><a href="/books" class="nav-icon">Books</a></li>
-              <li><a href="/users/sign_out" class="nav-icon">logout</a></li>
+              <li><%= link_to "Home", post_image_path(@post_image) %></li>
+              <li><%= link_to "Users", post_images_path %></li>
+              <li><%= link_to "Books", books_path %></li>
+              <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
             <% else %>
-              <li><a href="/" class="nav-icon">Home</a></li>
-              <li><a href="/home/about" class="nav-icon">About</a></li>
+              <li><%= link_to "Home", top_home_path %></li>
+              <li><%= link_to "About", about_home_path %></li>
               <li><%= link_to "Sign up", new_user_registration_path %></li>
               <li><%= link_to "Login", new_user_session_path %></li>
             <% end %>
@@ -31,6 +31,7 @@
         </nav>
       </div><!-- /.container -->
     </header>
+    <p>CopyRight Infratop.inc</p>
     <%= yield %>
   </body>
 </html>

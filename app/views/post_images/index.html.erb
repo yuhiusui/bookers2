@@ -24,14 +24,33 @@
 				<%= f.label :Title %><br>
 				<%= f.text_field :title %><br>
 
-				<%= f.label :Body %><br>
+				<%= f.label :Opinion %><br>
 				<%= f.text_area :body %>
 
 				<br><%= f.submit 'Create Book' %>
 
 			<% end %>
 		</div><!-- /.urinfo -->
-		<div class="otherinfo"></div><!-- /.urbooks -->
+		<div class="otherinfo">
+			<table>
+				<thead>
+					<tr>
+						<th>image</th>
+						<th>name</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @post_images.each do |post_image| %>
+					<tr>
+						<th>post_image.profile_image_id</th>
+						<th>post_image.name</th>
+						<th><%= link_to "Show", post_image_path(@book) %></th>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div><!-- /.urbooks -->
 
 	</div><!-- /.container -->
 </body>
