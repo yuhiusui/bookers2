@@ -5,7 +5,7 @@
 	<div class="container">
 		<div class="urinfo">
 			<h1>User info</h1>
-			<img>
+			<p><%= @user.profile_image %></p>
 			<table>
 				<thead>
 					<tr>
@@ -15,8 +15,8 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td><%= @post_image.name %></td>
-						<td><%= @post_image.introduction %></td>
+						<td><%= @user.name %></td>
+						<td><%= @user.introduction %></td>
 					</tr>
 				</tbody>
 			</table>

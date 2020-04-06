@@ -1,9 +1,9 @@
-<%= form _for(@post_image, url:post_images_path) do |f| %>
+<%= form _for(@user, url:users_path) do |f| %>
 <h1>User info</h1>
 	<%= f.label :Name %>
 	<%= f.text_field :name %>
 
-	<%= f.attachment_field :image %>
+	<%= f.attachment_field :profile_image %>
 
 	<%= f.label :Introduction %>
 	<%= f.text_area :introduction %>

@@ -5,5 +5,4 @@ Rails.application.routes.draw do
   root 'home#top'
   resources :users, only: [:show]
   resources :books
-  resources :post_images, only:[:new, :create, :index, :show]
 end
