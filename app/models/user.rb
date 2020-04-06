@@ -7,9 +7,9 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { in: 2..20 }
   validates :passward, presence: true, length: {minimum: 6 }
   validates :introduction, length: {maximum: 50}
+  validates :profile_image, presence: true
 
-  has_many :post_images
-  has_many :books
+  has_many :books, dependent: :destroy
 
   attachment :profile_image
 end

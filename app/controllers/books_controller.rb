@@ -1,11 +1,14 @@
 class BooksController < ApplicationController
   def index
-  	@books = Book.all
   	@book = Book.new
+  	@books = Book.all
+  	@user = User.find(params[:id])
   end
 
   def show
-  	@book = Book.find(params[:id])
+  	@book = Book.new
+  	@books = Book.find(params[:id])
+  	@user = User.find(params[:id])
   end
 
   def create
@@ -14,8 +17,7 @@ class BooksController < ApplicationController
   		redirect_to book_path(@book.id), notice: 'Book was successfully created.'
   	else
       @books = Book.all
-      # flash.now[:alert] = "メッセージ"
-  		render :index
+  	　render :index
   	end
   end
 
@@ -40,6 +42,6 @@ class BooksController < ApplicationController
 
   private
   def book_params
-  	params.require(:book).permit(:title, :body)
+  	params.require(:book).permit(:title, :body, :profile_image)
   end
 end
