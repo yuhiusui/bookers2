@@ -9,8 +9,8 @@
 <%= form_for(@book) do |f| %>
 	<p>Title</p>
 	<%= f.text_field :title %>
-	<p>Body</p>
-	<%= f.text_field :opinion %><br/>
+	<p>Opinion</p>
+	<%= f.text_field :body %><br/>
 	<%= f.submit "Update Book" %>
 <% end %>
 
