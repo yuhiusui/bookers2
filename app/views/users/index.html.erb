@@ -1,12 +1,5 @@
 <body>
 	<div class="container">
-		<% if @book.errors.any? %>
-			<ul>
-				<% @book.errors.full_messages.each do |message| %>
-					<li><%= message %></li>
-				<% end %>
-			</ul>
-		<% end %>
 		<%= render 'users/list', user: @user, book: @book %>
 		<div class="otherinfo">
 			<table>

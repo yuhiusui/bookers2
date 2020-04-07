@@ -10,13 +10,13 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td><%= user.name %></td>
-				<td><%= user.introduction %></td>
+				<td><%= @user.name %></td>
+				<td><%= @user.introduction %></td>
 			</tr>
 		</tbody>
 	</table>
 
-	<p><%= link_to "", class: "btn btn-default glyphicon glyphicon-wrench", edit_user_path(@user) %></p>
+	<p><%= link_to "www", edit_user_path(@user) %></p>
 
 	<h3>New book</h3>
 	<%= form_for(book) do |f| %>
