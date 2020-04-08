@@ -1,8 +1,6 @@
-<body>
 	<% if flash[:notice] %>
 		<p><%= flash[:notice] %></p>
 	<% end %>
-	<div class="container">
 		<div class="row">
 			<%= render 'books/list', user: @user, book: @book %>
 			<div class="books col-xs-9">
@@ -28,5 +26,4 @@
 				</table>
 			</div>
 		</div>
-	</div>
-</body>
+	

@@ -1,16 +1,14 @@
-<body>
-	<div class="container">
+
 		<%= form_for(@user, url:user_path(@user)) do |f| %>
 		<h2>User info</h2>
 			<%= f.label :Name %>
-			<%= f.text_field :name %>
+			<%= f.text_field :name, class: "mb-10px" %><br>
 
-			<%= f.attachment_field :profile_image %>
+			<%= f.label :image %>
+			<%= f.attachment_field :profile_image, class: "mb-10px" %>
 
 			<%= f.label :Introduction %>
-			<%= f.text_area :introduction %>
+			<%= f.text_area :introduction, class: "mb-10px" %><br>
 
-			<%= f.submit "Update User" %>
+			<%= f.submit "Update User", class: "mb-10px" %>
 		<% end %>
-	</div><!-- /.container -->
-</body>
