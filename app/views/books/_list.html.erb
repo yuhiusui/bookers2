@@ -1,33 +1,37 @@
 <div class="urinfo col-xs-3">
-	<h1>User info</h1>
+	<h2>User info</h2>
 	<p><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "noimage.png", size:'100x100' %></p>
-	<table>
+	<table class="table">
 		<thead>
-			<tr>
-			<th>name</th>
-			<th>introduction</th>
-			</tr>
 		</thead>
 		<tbody>
 			<tr>
+				<th>name</th>
 				<td><%= user.name %></td>
+			</tr>
+			<tr>
+				<th>introduction</th>
 				<td><%= user.introduction %></td>
 			</tr>
 		</tbody>
 	</table>
 
-	<p><%= link_to "", edit_user_path(user), class: "btn btn-default glyphicon glyphicon-wrench" %></p>
+	<div class="row">
+		<p><%= link_to "", edit_user_path(user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %></p>
+	</div>
 
-	<h3>New book</h3>
+	<h2>New book</h2>
+	<div class="row">
 	<%= form_for(book) do |f| %>
 
 		<%= f.label :Title %><br>
-		<%= f.text_field :title %><br>
+		<%= f.text_field :title, class: "col-xs-12 mb-5px" %><br>
 
 		<%= f.label :Opinion %><br>
-		<%= f.text_area :body %>
+		<%= f.text_area :body, class: "col-xs-12 mb-5px" %>
 
-		<br><%= f.submit 'Create Book' %>
+		<br><%= f.submit 'Create Book', class: "btn btn-primary col-xs-12" %>
 
 	<% end %>
+	</div>
 </div><!-- /.urinfo -->
