@@ -5,7 +5,7 @@
 	<div class="container">
 		<div class="row">
 			<%= render 'books/list', user: @user, book: @book %>
-			<div class="booksdetail">
+			<div class="booksdetail col-xs-9">
 				<h2>Book detail</h2>
 
 				<table class="table">
@@ -14,8 +14,8 @@
 					<tbody>
 						<% @books.each do |book| %>
 						<tr>
-							<td><%= attachment_image_tag book, :profile_image, :fill, 40, 40, fallback: "noimage.png", size:'40x40' %></td>
-							<td><%= @user.name %></td>
+							<td><a href="/users/show"><%= attachment_image_tag @user, :profile_image, :fill, 40, 40, fallback: "noimage.png", size:'40x40' %>
+							<br><%= @user.name %></a></td>
 							<td><%= book.title %></td>
 							<td><%= book.body %></td>
 							<% if book.user == current_user %>
