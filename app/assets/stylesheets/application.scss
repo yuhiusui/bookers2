@@ -35,8 +35,15 @@ header .navbar-left span {
 .body {
 	margin-top: 60px;
 }
-
-
 .link {
 	color: #666;
+}
+.hover:hover {
+	background: black;
+}
+.field {
+	margin-bottom: 10px;
+}
+.actions {
+	margin-bottom: 10px;
 }
