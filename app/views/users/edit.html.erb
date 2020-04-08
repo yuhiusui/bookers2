@@ -1,10 +1,11 @@
 
-		<%= form_for(@user, url:user_path(@user)) do |f| %>
+		<%= form_for(@user, url: user_path(@user.id)) do |f| %>
 		<h2>User info</h2>
 			<%= f.label :Name %>
 			<%= f.text_field :name, class: "mb-10px" %><br>
 
 			<%= f.label :image %>
+			<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "noimage.png", size:'100x100' %>
 			<%= f.attachment_field :profile_image, class: "mb-10px" %>
 
 			<%= f.label :Introduction %>
