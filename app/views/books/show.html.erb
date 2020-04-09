@@ -1,6 +1,6 @@
 
 	<% if flash[:notice] %>
-		<p><%= flash[:notice] %></p>
+		<p class="flash"><%= flash[:notice] %></p>
 	<% end %>
 		<div class="row">
 			<%= render 'books/list', user: @user, book: @book %>

@@ -11,7 +11,8 @@ before_action :authenticate_user!
   	@book = Book.new
     @book_id = Book.find(params[:id])
   	@user = @book_id.user
-  	@books = @user.books
+    # @user = User.find(@book_id.user_id)
+  	# @books = @user.books
   end
 
   def create
@@ -21,6 +22,7 @@ before_action :authenticate_user!
   		redirect_to book_path(@book.id), notice: 'Book was successfully created.'
   	else
       @books = Book.all
+      @user = current_user
   	  render :index
   	end
   end
@@ -48,4 +50,5 @@ before_action :authenticate_user!
   def book_params
   	params.require(:book).permit(:title, :body, :profile_image)
   end
+  # @book_id.user == current_user
 end
