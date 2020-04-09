@@ -9,7 +9,8 @@ before_action :authenticate_user!
 
   def show
   	@book = Book.new
-  	@user = User.find(params[:id])
+    @book_id = Book.find(params[:id])
+  	@user = @book_id.user
   	@books = @user.books
   end
 
@@ -20,7 +21,7 @@ before_action :authenticate_user!
   		redirect_to book_path(@book.id), notice: 'Book was successfully created.'
   	else
       @books = Book.all
-  	　render :index
+  	  render :index
   	end
   end
 
