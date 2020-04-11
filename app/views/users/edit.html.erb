@@ -1,6 +1,18 @@
 
 		<%= form_for(@user, url: user_path(@user.id)) do |f| %>
 		<h2>User info</h2>
+
+		<% if @user.errors.any? %>
+			<div id="error_explanation">
+   				<h2><%= @user.errors.count %>errors prohibited this obj from being saved:</h2>
+				<ul>
+					<% @user.errors.full_messages.each do |message| %>
+						<li><%= message %></li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+
 			<%= f.label :Name %>
 			<%= f.text_field :name, class: "mb-10px" %><br>
 
