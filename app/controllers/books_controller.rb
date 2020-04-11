@@ -1,20 +1,22 @@
 class BooksController < ApplicationController
 before_action :authenticate_user!
-
+before_action :ensure_current_user_book?, only: [:edit, :update]
+  def ensure_current_user_book?
+    book = Book.find(params[:id])
+    redirect_to books_path unless current_user.id == book.user_id
+  end
 
   def index
   	@book = Book.new
   	@books = Book.all
+    # TODO: delete
   	@user = current_user
-    @users = User.all
   end
 
   def show
   	@book = Book.new
     @book_id = Book.find(params[:id])
   	@user = @book_id.user
-    # @user = User.find(@book_id.user_id)
-  	# @books = @user.books
   end
 
   def create
@@ -30,8 +32,9 @@ before_action :authenticate_user!
   end
 
   def edit
-  	@book = Book.find(params[:id])
-    # if @book.user_id != current_user
+    @book = Book.find(params[:id])
+    # redirect_to book_path(@book)
+    # unless @book = current_user
     #   redirect_to book_path(@book)
     # end
   end
@@ -55,4 +58,5 @@ before_action :authenticate_user!
   def book_params
   	params.require(:book).permit(:title, :body, :profile_image)
   end
+
 end
