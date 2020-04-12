@@ -9,7 +9,6 @@ before_action :ensure_current_user_book?, only: [:edit, :update]
   def index
   	@book = Book.new
   	@books = Book.all
-    # TODO: delete
   	@user = current_user
   end
 
@@ -33,10 +32,6 @@ before_action :ensure_current_user_book?, only: [:edit, :update]
 
   def edit
     @book = Book.find(params[:id])
-    # redirect_to book_path(@book)
-    # unless @book = current_user
-    #   redirect_to book_path(@book)
-    # end
   end
 
   def update
