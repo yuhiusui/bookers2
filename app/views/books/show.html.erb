@@ -15,14 +15,22 @@
 							<td><%= attachment_image_tag @user, :profile_image, :fill, 40, 40, fallback: "noimage.png", size:'40x40' %>
 							<br><%= link_to @user.name, user_path(@user), class: "link hover" %></td>
 							<td><%= link_to @book_id.title, book_path(@book_id), class: "link hover" %></td>
-							<td><%= @book_id.body %></td>
-							<% if @book_id.user == current_user %>
-								<td><%= link_to "Edit", edit_book_path(@book_id), class: "btn btn-success btn-sm" %></td>
-								<td><%= link_to "Destroy", book_path(@book_id), method: :delete, "data-confirm" => "Are you sure?", class: "btn btn-danger btn-sm" %></td>
-							<% end %>
+							<td><%= render "favorites/favorite", book_id: @book_id %></td>
+							<td><%= "コメント数：#{@book.book_comments.count}" %></td>
+							<td>
+								<% if @book_id.user == current_user %>
+									<td><%= link_to "Edit", edit_book_path(@book_id), class: "btn btn-success btn-sm" %></td>
+									<td><%= link_to "Destroy", book_path(@book_id), method: :delete, "data-confirm" => "Are you sure?", class: "btn btn-danger btn-sm" %></td>
+								<% end %>
+							</td>
 						</tr>
 					</tbody>
 				</table>
+				<div>
+					<%= form_for [@book_id, @book_comment] do |f| %>
+					     <%= f.text_area :comment, rows:'5', class: "form-control", placeholder: "コメントをここに" %>
+					    <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+					<% end %>
+				</div>
 			</div>
 		</div>
-	
