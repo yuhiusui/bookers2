@@ -1,0 +1,13 @@
+<div class="row">
+  <%= form_for(book) do |f| %>
+
+    <%= f.label :Title %><br>
+    <%= f.text_field :title, class: "col-xs-12 mb-5px" %><br>
+
+    <%= f.label :Opinion %><br>
+    <%= f.text_area :body, class: "col-xs-12 mb-5px" %>
+
+    <br><%= f.submit 'Create Book', class: "btn btn-primary col-xs-12" %>
+
+  <% end %>
+</div>

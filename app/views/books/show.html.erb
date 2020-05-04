@@ -3,14 +3,16 @@
 		<p class="flash"><%= flash[:notice] %></p>
 	<% end %>
 		<div class="row">
-			<%= render 'books/list', user: @book_id.user, book: @book %>
+			<div class="urinfo col-xs-3">
+				<h2>User info</h2>
+					<%= render 'users/info', user: @book_id.user %>
+				<h2>New book</h2>
+					<%= render 'form', book: @book %>
+			</div>
 			<div class="booksdetail col-xs-9">
 				<h2>Book detail</h2>
 
 				<table class="table">
-					<thead>
-					</thead>
-					<tbody>
 						<tr>
 							<td><%= attachment_image_tag @book_id.user, :profile_image, :fill, 40, 40, fallback: "noimage.png", size:'40x40' %>
 							<br><%= link_to @book_id.user.name, user_path(@book_id.user), class: "link hover" %></td>
@@ -24,23 +26,21 @@
 								<% end %>
 							</td>
 						</tr>
-					</tbody>
 				</table>
-				<ol>
-			      <% @book_comments.each do |book_comment| %>
-			        <li class="comment">
-                <%= attachment_image_tag book_comment.user, :profile_image, :fill, 40, 40, fallback: "noimage.png", size:'40x40' %>
-                <a href="#" class="link-author"><%= book_comment.user.name %></a>
-                <span class="comment-date"><%= book_comment.created_at.strftime('%Y/%m/%d') %></span>
-                <p>
-                	<% if book_comment.user == current_user %>
-		              	<%= link_to "Destroy", book_book_comments_path(book_comment.id), method: :delete, "data-confirm" => "Are you sure?", class: "btn btn-danger btn-sm" %>
-		            	<% end %>
-		        		</p>
-              	<div class="comment-entry"><%= book_comment.comment %></div>
-			        </li>
+
+				<table>
+						<% @book_comments.each do |book_comment| %>
+						<tr>
+              <td><%= attachment_image_tag book_comment.user, :profile_image, :fill, 40, 40, fallback: "noimage.png", size:'40x40' %>
+              <br><%= link_to book_comment.user.name, user_path(book_comment.id) %></td>
+              <td><%= book_comment.created_at.strftime('%Y/%m/%d') %><br>
+              	<% if book_comment.user == current_user %>
+	              	<%= link_to "Destroy", book_book_comments_path(book_comment.id), method: :delete, "data-confirm" => "Are you sure?", class: "btn btn-danger btn-xs" %>
+	            	<% end %></td>
+              <td><%= book_comment.comment %></td>
+             </tr>
 			      <% end %>
-			    </ol>
+				</table>
 				<div>
 					<%= form_for [@book_id, @book_comment] do |f| %>
 					     <%= f.text_area :comment, rows:'5', class: "form-control", placeholder: "コメントをここに" %>
