@@ -2,10 +2,10 @@
 <div class="stats">
   <tr>
     <th>following</th>
-    <td><%= link_to user.followings.count, following_user_path(@user) %></td>
+    <td><%= link_to user.followings.count, following_user_path(user) %></td>
   </tr>
   <tr>
     <th>followers</th>
-    <td><%= link_to user.followers.count, followers_user_path(@user) %></td>
+    <td><%= link_to user.followers.count, followers_user_path(user) %></td>
   </tr>
 </div>

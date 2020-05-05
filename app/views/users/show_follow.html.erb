@@ -1,8 +1,25 @@
-<% @user.followings.each do |user| %>
-<table>
-  <tr>
-    <td><%= user.name %></td>
-    <td><%= link_to "詳細", user_path(user) %></td>
-  </tr>
+<h2>Follow User</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.followings.each do |user| %>
+    <tr>
+      <td><%= attachment_image_tag user, :profile_image, :fill, 40, 40, fallback: "noimage.png", size:'40' %></td>
+      <td><%= user.name %></td>
+      <td><%= "フォロー数#{user.followings.count}" %></td>
+      <td><%= "フォロワー数#{user.followers.count}" %></td>
+      <td></td>
+      <td><%= link_to "詳細", user_path(user) %></td>
+    </tr>
+    <% end %>
+  </tbody>
 </table>
-<% end %>
