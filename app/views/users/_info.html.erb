@@ -11,14 +11,22 @@
       <th>introduction</th>
       <td><%= user.introduction %></td>
     </tr>
-    <%= render 'users/stats', user: user %>
+    <tr>
+      <th>following</th>
+      <td><%= link_to user.followings.count, following_user_path(user) %></td>
+    </tr>
+    <tr>
+      <th>followers</th>
+      <td><%= link_to user.followers.count, followers_user_path(user) %></td>
+    </tr>
     <tr>
       <td><%= render 'users/follow_form', user: user %></td>
     </tr>
   </tbody>
 </table>
 
-
-<div class="row">
-  <p><%= link_to "", edit_user_path(user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %></p>
-</div>
+<% if user == current_user %>
+  <div class="row">
+    <p><%= link_to "", edit_user_path(user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %></p>
+  </div>
+<% end %>
