@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'home/about' => 'home#about'
   get 'search' => 'searches#search'
 
-  resources :users do
+  resources :users, shallow: true do
     member do
       get :following, :followers
     end
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :books do
     resource :favorites, only: [:create, :destroy]
-    resource :book_comments, only: [:destroy, :create]
+    resources :book_comments, only: [:destroy, :create]
   end
 
   #resources :relationships, only: [:create, :destroy]

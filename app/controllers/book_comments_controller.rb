@@ -3,17 +3,20 @@ class BookCommentsController < ApplicationController
   # before_action :correct_user, only: [:destroy]
 
   def create
-  	book = Book.find(params[:book_id])
-    comment = book.book_comments.new(book_comment_params)
+  	@book = Book.find(params[:book_id])
+    comment = @book.book_comments.new(book_comment_params)
+    @book_comments = @book.book_comments.order("id DESC")
     comment.user_id = current_user.id
     comment.save
-    redirect_back(fallback_location: root_path)
+    # redirect_back(fallback_location: root_path)
   end
 
   def destroy
-  	comment = BookComment.find(params[:book_id])
+    @book = Book.find(params[:book_id])
+    @book_comments = @book.book_comments.order("id DESC")
+  	comment = BookComment.find(params[:id])
   	comment.destroy
-  	redirect_back(fallback_location: root_path)
+  	# redirect_back(fallback_location: root_path)
   end
 
   private
@@ -29,7 +32,7 @@ class BookCommentsController < ApplicationController
 	#  end
 end
 
-# <% @book_id.book_comments.each do |book_comment| %>
+# <% @book.book_comments.each do |book_comment| %>
 # <li class="comment">
 #   <div class="comment-body bb">
 #     <div class="comment-avatar">

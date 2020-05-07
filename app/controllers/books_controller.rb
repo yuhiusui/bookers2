@@ -13,10 +13,10 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.new
-    @book_id = Book.find(params[:id])
+    @newbook = Book.new
+    @book = Book.find(params[:id])
     @book_comment = BookComment.new
-    @book_comments = @book_id.book_comments
+    @book_comments = @book.book_comments.order("id DESC")
   end
 
   def create
