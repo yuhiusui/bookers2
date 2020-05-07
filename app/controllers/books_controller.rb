@@ -9,7 +9,6 @@ class BooksController < ApplicationController
   def index
     @book = Book.new
     @books = Book.all
-    @user = current_user
   end
 
   def show
@@ -26,7 +25,6 @@ class BooksController < ApplicationController
       redirect_to book_path(@book.id), notice: 'Book was successfully created.'
     else
       @books = Book.all
-      @user = current_user
       render :index
     end
   end
