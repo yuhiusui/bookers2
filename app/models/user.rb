@@ -6,10 +6,10 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { in: 2..20 }
   validates :introduction, length: { maximum: 50 }
-  validates :postcode, presence: true
-  validates :prefecture_code, presence: true
-  validates :city, presence: true
-  validates :street, presence: true
+  # validates :postcode, presence: true
+  # validates :prefecture_code, presence: true
+  # validates :city, presence: true
+  # validates :street, presence: true
 
   has_many :books, dependent: :destroy
   has_many :book_comments, dependent: :destroy

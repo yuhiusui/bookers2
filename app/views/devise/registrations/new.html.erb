@@ -19,7 +19,6 @@
   </div><!-- /.field -->
   <div class="field">
     <%= f.label :prefecture_code %><br />
-    <%=# f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :name, :name %>
     <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, class: "address" %>
   </div><!-- /.field -->
   <div class="field">
