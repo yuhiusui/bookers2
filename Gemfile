@@ -73,4 +73,6 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 
 gem 'rubocop-airbnb'
-gem 'jquery-rails'
+gem 'jp_prefecture'
+gem 'dotenv-rails'
+

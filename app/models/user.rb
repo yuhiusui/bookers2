@@ -6,6 +6,10 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { in: 2..20 }
   validates :introduction, length: { maximum: 50 }
+  validates :postcode, presence: true
+  validates :prefecture_code, presence: true
+  validates :city, presence: true
+  validates :street, presence: true
 
   has_many :books, dependent: :destroy
   has_many :book_comments, dependent: :destroy
@@ -21,7 +25,7 @@ class User < ApplicationRecord
 
   attachment :profile_image
 
-
+# follow関連
   def following?(other_user)
     following_relationships.find_by(following_id: other_user.id)
   end
@@ -33,6 +37,8 @@ class User < ApplicationRecord
   def unfollow!(other_user)
     following_relationships.find_by(following_id: other_user.id).destroy
   end
+# follow関連
+
 
   def self.search(search, word)
     if search == "perfect_match"
@@ -47,4 +53,15 @@ class User < ApplicationRecord
       @user = User.all
     end
   end
+
+  include JpPrefecture
+  jp_prefecture :prefecture_code
+  # def prefecture_name
+  #   JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
+  # end
+
+  # def prefecture_name=(prefecture_name)
+  #   self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
+  # end
+
 end

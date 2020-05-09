@@ -20,16 +20,12 @@ Things you may want to cover:
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
-
-Bookers2に住所検索機能を追加しましょう
-jpostal.jpとgem jp_prefectureを使用して住所を検索しましょう
+課題8
+Bookers2にメール送信機能を追加しましょう
+ActionMailerを用いて、新規登録したユーザーにthanksメールを送ること
 実装する機能
-
-モデル
-userモデルに郵便番号, 住所を格納するカラムを追加
-ビュー
-新規登録画面に郵便番号を入力するフォームを追加
-郵便番号を入力後、郵便番号に対応する住所を住所フォームに自動入力させる
-マイページに自分の住所の地図を表示 他人の詳細画面では住所を表示しないこと
-Google Map APIを使用すること
-APIトークンはgem dotenv-railsを使用し、環境変数として扱うこと
+メイラー
+thanksメイラーを作成すること
+メール本文は自由とする
+コントローラ
+deviseのregistrationsコントローラをオーバーライドし、新規登録に成功した後、thanksメイラーを呼び出すこと
