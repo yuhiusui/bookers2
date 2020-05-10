@@ -1,16 +1,19 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  attachment :profile_image
+
+# バリデーション
   validates :name, presence: true, length: { in: 2..20 }
   validates :introduction, length: { maximum: 50 }
   # validates :postcode, presence: true
   # validates :prefecture_code, presence: true
   # validates :city, presence: true
   # validates :street, presence: true
+# バリデーション
 
+# アソシエーション
   has_many :books, dependent: :destroy
   has_many :book_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -22,8 +25,11 @@ class User < ApplicationRecord
                                     dependent: :destroy
   has_many :followings, through: :following_relationships
   has_many :followers, through: :follower_relationships
+  has_many :user_rooms
+  has_many :chats
+  has_many :rooms, through: :user_rooms
+# アソシエーション
 
-  attachment :profile_image
 
 # follow関連
   def following?(other_user)
